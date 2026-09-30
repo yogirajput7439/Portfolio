@@ -1,25 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   ANIMATED AI / DATA BACKGROUND
+========================================= */
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            #102f55 0%,
+            #0b203c 30%,
+            #061326 60%,
+            #020811 100%
+        );
+}
+
+/* Subtle Data Grid */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            rgba(70, 150, 220, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(70, 150, 220, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 20%,
+            transparent 85%
+        );
+
+    z-index: -2;
+}
+
+/* Particle Canvas */
+
+#background {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding-top: 40vh;
+}
+
 /* =========================================
    GLOBAL
 ========================================= */
 
 :root {
-    --bg: #0f0f0f;
-    --bg-soft: #111111;
-    --card: #0c0e0d43;
-    --card-hover: #1b1b1b;
+    --bg: transparent;
+    --bg-soft: transparent;
 
-    --text: #f5f5f5;
+    --card: rgba(255, 255, 255, 0.035);
+    /* --card: transparent; */
+    --card-hover: rgba(9, 47, 72, 0.367);
+    /* --card-hover: transparent; */
+
+    --text: #0ac716;
     --text-soft: #f5f7f9;
-    --border: #292929;
+
+    --border: rgba(33, 100, 81, 0.526);
 
     --accent: #ffffff;
-    --accent-dark: #0a0a0a;
+    --accent-dark: #0ded23;
 
     --max-width: 1180px;
 
     --transition: 0.3s ease;
+
+.project-btn {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(120, 190, 255, 0.4);
 }
 
+.project-btn:hover {
+    background: rgba(120, 190, 255, 0.12);
+    color: #ffffff;
+    border-color: rgba(120, 190, 255, 0.7);
+}
+
+}
 
 * {
     margin: 0;
@@ -33,17 +131,13 @@ html {
 }
 
 
-body {
+/* body {
     font-family: "Inter", sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
-}
+} */
 
-
-body.menu-open {
-    overflow: hidden;
-}
 
 
 a {
@@ -115,8 +209,8 @@ img {
     width: 100%;
     z-index: 1000;
 
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(14px);
+    background: transparent;
+    backdrop-filter: blur(12px);
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -147,11 +241,12 @@ img {
     display: flex;
     align-items: center;
     gap: 30px;
+    
 }
 
 
 .nav-link {
-    color: var(--text-soft);
+    color: white;
     font-size: 0.9rem;
     transition: var(--transition);
 }
@@ -166,18 +261,18 @@ img {
 .nav-resume {
     padding: 10px 18px;
 
-    border: 1px solid var(--border);
+    border: 1px solid aqua;
     border-radius: 6px;
 
     font-size: 0.85rem;
 
-    transition: var(--transition);
+    transition: var(--transition); 
 }
 
 
 .nav-resume:hover {
-    background: var(--text);
-    color: var(--bg);
+    background: transparent;
+    color: greenyellow;
 }
 
 
@@ -209,23 +304,25 @@ img {
    HERO
 ========================================= */
 
+/* Professional Glass Hero */
+
+/* Home / Hero - Transparent Glass */
 .hero {
+    /* background: transparent; */
+    
     min-height: 100vh;
+    width: 100%;
+    background: transparent !important;
+    position: relative;
 
-    display: flex;
-    align-items: center;
-
-    padding-top: 150px;
 }
 
-
+/* Hero content ko subtle glass panel */
 .hero-container {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-
-    gap: 70px;
-
-    align-items: center;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(150, 200, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 
@@ -619,7 +716,7 @@ img {
 ========================================= */
 
 .projects {
-    background: var(--bg-soft);
+    background: transparent;
 }
 
 
@@ -895,7 +992,7 @@ img {
 ========================================= */
 
 .contact {
-    background: var(--bg-soft);
+    background: transparent;
 }
 
 
@@ -1250,4 +1347,112 @@ img {
         transition: none !important;
     }
 
+}
+
+/* =========================================
+   TRANSPARENT GLASS CARDS
+========================================= */
+
+.highlight-card,
+.skill-card,
+.project-card,
+.focus-box,
+.education-card,
+.contact-box {
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(120, 190, 255, 0.20);
+    border-radius: 16px;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.08),
+        0 8px 25px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.3s ease;
+}
+.highlight-card:hover,
+.skill-card:hover,
+.project-card:hover,
+.focus-box:hover,
+.education-card:hover,
+.contact-box:hover {
+    border-color: rgba(120, 190, 255, 0.40);
+
+    background: rgba(255, 255, 255, 0.055);
+
+    transform: translateY(-3px);
+}
+
+
+/* Card Hover */
+
+.skill-card:hover,
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* Hero Buttons - Glass / Mirror Effect */
+
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+
+    border: 1px solid rgba(150, 210, 255, 0.35);
+    border-radius: 8px;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary:hover,
+.hero-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(150, 210, 255, 0.65);
+
+    transform: translateY(-2px);
+}
+
+/* Hover Effect */
+.hero-buttons .btn-primary:hover,
+.hero-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(150, 200, 255, 0.65);
+
+    box-shadow:
+        inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        0 4px 15px rgba(40, 150, 255, 0.10);
+
+    transform: translateY(-2px);
+}
+
+/* Navbar - All Items Border Style */
+
+.navbar a {
+    border: 2px solid transparent;
+    border-radius: 12px;
+
+    padding: 10px 18px;
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.navbar a:hover {
+    border-color: #00ffff;
+    background: rgba(0, 255, 255, 0.04);
+}
+
+/* Active Project */
+.navbar a.active {
+    border-color: #00ffff;
 }
